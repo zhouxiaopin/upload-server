@@ -2,6 +2,7 @@ package cn.gzticc.uploadserver.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.net.ftp.FTPClient;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,12 +15,16 @@ import java.util.List;
 @Slf4j
 public class FTPUtil {
 
-
-    private static String ftpIp = "";
-    private static int ftpPort = 21;
-    private static String ftpUser = "";
-    private static String ftpPass = "";
-    private static String picVidoRemotePath = "img";
+    @Value("us.ftp.ip")
+    private static String ftpIp;
+    @Value("us.ftp.port")
+    private static int ftpPort;
+    @Value("us.ftp.user")
+    private static String ftpUser;
+    @Value("us.ftp.pass")
+    private static String ftpPass;
+    @Value("us.picVidoRemotePath")
+    private static String picVidoRemotePath;
 
 
     public FTPUtil(String ip,int port,String user,String pwd){
