@@ -14,25 +14,7 @@ import java.util.Map;
 public class ResultUtils {
     private ResultUtils(){}
 
-    public static BaseResult baseResult(Integer code, String msg){
-        BaseResult baseResult = new BaseResult();
-        baseResult.setCode(code);
-        baseResult.setMsg(msg);
-        return baseResult;
-    }
-    public static BaseResult baseResult(Integer code, String msg,Object data){
-        BaseResult baseResult = new BaseResult();
-        baseResult.setCode(code);
-        baseResult.setMsg(msg);
-        baseResult.setData(data);
-        return baseResult;
-    }
-    public static BaseResult baseResult(BaseEnum baseEnum){
-        BaseResult baseResult = new BaseResult();
-        baseResult.setCode(baseEnum.getCode());
-        baseResult.setMsg(baseEnum.getMsg());
-        return baseResult;
-    }
+
     /**
      * 接口返回结果集合
      * @param status 状态：true表示成功、false表示失败
