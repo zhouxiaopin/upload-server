@@ -1,12 +1,14 @@
 package cn.gzticc.uploadserver.controller;
 
+import cn.gzticc.uploadserver.common.ServerResponse;
 import com.google.common.collect.Maps;
 import com.google.common.io.BaseEncoding;
 import org.apache.logging.log4j.util.PropertiesUtil;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
