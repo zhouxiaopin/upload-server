@@ -3,6 +3,7 @@ package cn.gzticc.uploadserver.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,35 +14,45 @@ import java.util.List;
  * ftp工具类
  */
 @Slf4j
+@Component
 public class FTPUtil {
 
-    @Value("us.ftp.ip")
-    private static String ftpIp;
-    @Value("us.ftp.port")
-    private static int ftpPort;
-    @Value("us.ftp.user")
-    private static String ftpUser;
-    @Value("us.ftp.pass")
-    private static String ftpPass;
-    @Value("us.picVidoRemotePath")
-    private static String picVidoRemotePath;
+/*    @Value("${us.ftp.ip}")
+    private static String ftpIp = Const.FtpConf.ftpIp;
+//    private static String ftpIp = "192.168.239.211";
+    @Value("${us.ftp.port}")
+    private static int ftpPort = 21;
+    @Value("${us.ftp.user}")
+    private static String ftpUser = "ftpuser";
+    @Value("${us.ftp.pass}")
+    private static String ftpPass = "123456";*/
+
+    @Value("${us.ftp.ip}")
+    private String ip;
+    @Value("${us.ftp.port}")
+    private int port;
+    @Value("${us.ftp.user}")
+    private String user;
+    @Value("${us.ftp.pass}")
+    private String pwd;
+
+    private FTPClient ftpClient;
+//
+//    public FTPUtil(String ip,int port,String user,String pwd){
+//        this.ip = ip;
+//        this.port = port;
+//        this.user = user;
+//        this.pwd = pwd;
+//    }
+//
+//    public static boolean uploadFile(List<File> fileList,String remotePath) throws IOException {
+//        FTPUtil ftpUtil = new FTPUtil(ftpIp,ftpPort,ftpUser,ftpPass);
+//        boolean result = ftpUtil.uploadFile(remotePath,fileList);
+//        return result;
+//    }
 
 
-    public FTPUtil(String ip,int port,String user,String pwd){
-        this.ip = ip;
-        this.port = port;
-        this.user = user;
-        this.pwd = pwd;
-    }
-
-    public static boolean uploadFile(List<File> fileList) throws IOException {
-        FTPUtil ftpUtil = new FTPUtil(ftpIp,ftpPort,ftpUser,ftpPass);
-        boolean result = ftpUtil.uploadFile(picVidoRemotePath,fileList);
-        return result;
-    }
-
-
-    private boolean uploadFile(String remotePath,List<File> fileList) throws IOException {
+    public boolean uploadFile(String remotePath,List<File> fileList) throws IOException {
         log.info("开始连接ftp服务器");
         boolean uploaded = true;
         FileInputStream fis = null;
@@ -88,56 +99,4 @@ public class FTPUtil {
         return isSuccess;
     }
 
-
-
-
-
-
-
-
-    private String ip;
-    private int port;
-    private String user;
-    private String pwd;
-    private FTPClient ftpClient;
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    public FTPClient getFtpClient() {
-        return ftpClient;
-    }
-
-    public void setFtpClient(FTPClient ftpClient) {
-        this.ftpClient = ftpClient;
-    }
 }

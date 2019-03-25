@@ -12,12 +12,11 @@ public class Const {
         String ABLE = "01";
         String DISABLE = "02";
     }
-    public interface WechartConf{
-        //饭堂网上订餐小程序ID
-        String APPID = "wx5b3ea1376ec170fe";
-        //饭堂网上订餐小程序密钥
-        String APPSECRET = "eab92ec8053bc4a04c30c3679d5e750c";
-        String CODE2SESSION_URL = "https://api.weixin.qq.com/sns/jscode2session?";
+    public interface FtpConf{
+        String ftpIp = "192.168.239.211";
+        int ftpPort = 21;
+        String ftpUser = "ftpuser";
+        String ftpPass = "123456";
 
     }
 }
